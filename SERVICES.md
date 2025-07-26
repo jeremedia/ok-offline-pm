@@ -532,6 +532,11 @@ npm run dev
 # Develop and test locally
 npm run build && npm run preview
 # Test production build
+
+# IMPORTANT: Increment service worker cache version before release
+# Edit public/sw.js: ok-offline-v4 → ok-offline-v5
+# This forces Safari and other browsers to update cached assets
+
 git commit && git push
 # Deploy via GitHub Actions
 ```
