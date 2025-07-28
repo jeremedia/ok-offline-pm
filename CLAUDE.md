@@ -81,7 +81,7 @@ Switch to individual service repositories for:
 ## Service Interaction Patterns
 
 ### Frontend ↔ API Communication
-- **CORS**: Configured for localhost:8000 (dev) and offline.oknotok.com (prod)
+- **CORS**: Configured for 100.104.170.10:8005 (dev) and offline.oknotok.com (prod)
 - **Authentication**: API key for weather services, future JWT for user features
 - **Data Format**: JSON API responses with standardized error handling
 - **Caching**: Frontend caches API responses for offline functionality
@@ -112,13 +112,13 @@ git clone https://github.com/jeremedia/ok-offline-api.git api
 # Frontend development
 cd frontend
 npm install
-npm run dev  # Port 8000
+npm run dev -- --host 0.0.0.0 --port 8005  # Port 8005 with Tailscale IP
 
 # API development  
 cd api
 bundle install
 rails db:setup
-rails server  # Port 3000
+rails server -b 0.0.0.0 -p 3555  # Port 3555 with Tailscale IP
 ```
 
 ### API Integration Points

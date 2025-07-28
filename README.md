@@ -31,9 +31,10 @@ OK-OFFLINE Ecosystem
 
 | Service | Status | Technology | Repository |
 |---------|--------|------------|------------|
-| **Frontend PWA** | ✅ Production | Vue 3 + Vite | [okoffline-2025](https://github.com/jeremedia/okoffline-2025) |
-| **Weather API** | 🔧 In Development | Rails 8 API | [ok-offline-api](https://github.com/jeremedia/ok-offline-api) |
-| **Play Wisdom** | 📋 Planned | TBD | TBD |
+| **Frontend PWA** | ✅ Production v3.9.1 | Vue 3 + Vite | [ok-offline](https://github.com/jeremedia/ok-offline) |
+| **Weather API** | ✅ Production | Rails 8 API | [ok-offline-api](https://github.com/jeremedia/ok-offline-api) |
+| **Vector Search** | ✅ Production | Rails + pgvector + OpenAI | [ok-offline-api](https://github.com/jeremedia/ok-offline-api) |
+| **Play Wisdom** | 📋 Next Priority | TBD | TBD |
 | **Mobile App** | 💭 Future | React Native / Flutter | TBD |
 
 ## 🚀 Current Features
@@ -48,20 +49,41 @@ OK-OFFLINE Ecosystem
 - **Real-Time Weather** - Dust forecasts and conditions for Black Rock City
 - **Global Search** - Search across all camps, art installations, and events
 
-### Weather API (In Development)
+### Weather API (Completed ✅)
 - **Multiple Data Sources** - OpenWeatherMap + Apple WeatherKit integration
 - **Moon Phase Data** - Essential for playa navigation at night
 - **CORS Compliance** - Proper frontend-backend integration
 - **Robust Fallbacks** - Multiple weather services for reliability
+- **Production Ready** - Full documentation and error handling
+
+### Vector Search (Live in Production ✅)
+- **Three Search Modes** - Keyword (offline), Semantic (AI), Smart (hybrid)
+- **AI-Powered Understanding** - OpenAI embeddings for semantic matching
+- **Entity Extraction** - Automatic detection of locations, themes, activities
+- **750+ Items Indexed** - 2024 Burning Man data fully searchable
+- **Fast Performance** - 200-400ms response times with caching
+- **Offline Fallback** - Gracefully degrades to keyword search
+- **URL Parameters** - Shareable search links (e.g., ?q=yoga&mode=semantic)
+- **24-Hour Caching** - Reduces API calls and improves performance
 
 ## 🗺️ Development Roadmap
 
-### Phase 1: Weather Service Integration (Current)
+### Phase 1: Weather Service Integration (Completed ✅)
 - [x] Rails API service creation
 - [x] Apple WeatherKit JWT authentication
 - [x] Frontend weather service integration
-- [ ] CORS configuration completion
-- [ ] Production deployment
+- [x] CORS configuration completion
+- [x] Full API documentation
+- [ ] Production deployment (pending)
+
+### Phase 1.5: Vector Search Integration (Completed ✅)
+- [x] Backend implementation complete
+- [x] 750+ items indexed with embeddings
+- [x] All search endpoints functional
+- [x] Frontend service integration
+- [x] Search UI components (3 modes)
+- [x] Offline caching strategy (24-hour TTL)
+- [x] Live in production with URL parameters
 
 ### Phase 2: Play Wisdom Feature (Next)
 - [ ] API design for photo/audio/text uploads
@@ -108,19 +130,23 @@ OK-OFFLINE Ecosystem
 ### Quick Start
 ```bash
 # Clone the ecosystem
-git clone https://github.com/jeremedia/okoffline-2025.git frontend
+git clone https://github.com/jeremedia/ok-offline.git frontend
 git clone https://github.com/jeremedia/ok-offline-api.git api
+git clone https://github.com/jeremedia/ok-offline-pm.git project-management
 
 # Setup frontend
 cd frontend
 npm install
-npm run dev  # Runs on port 8000
+npm run dev -- --host 0.0.0.0 --port 8005  # Runs on port 8005
 
 # Setup API (in another terminal)
 cd api
 bundle install
 rails db:setup
-rails server  # Runs on port 3000
+rails server -b 0.0.0.0 -p 3555  # Runs on port 3555
+
+# For vector search, set OPENAI_API_KEY and run:
+# rails search:import[2024]
 ```
 
 ## 📱 Play Wisdom Feature (Planned)
