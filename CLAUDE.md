@@ -272,6 +272,118 @@ rails server -b 0.0.0.0 -p 3555  # Port 3555 with Tailscale IP
 - **Social Features**: Sharing, commenting, following
 - **Real-time Updates**: WebSocket integration
 
+## Release Coordination
+
+### Coordinating Multi-Service Releases
+
+When releasing features that span both frontend and API services, careful coordination is required:
+
+#### 1. API-First Release Strategy
+Always release API changes before frontend changes:
+```bash
+# 1. Deploy API with backward compatibility
+cd api
+git checkout -b feat/new-api-endpoint
+# Implement with versioning: /api/v1/new-endpoint
+# Deploy to production
+
+# 2. Deploy frontend using new API
+cd frontend
+git checkout -b feat/use-new-api
+# Update to use new endpoint
+# Deploy after API is live
+```
+
+#### 2. Feature Flags for Gradual Rollout
+For complex features, use feature flags:
+```javascript
+// Frontend config
+const FEATURES = {
+  playWisdom: process.env.NODE_ENV === 'production' ? false : true
+}
+
+// Enable gradually
+if (FEATURES.playWisdom) {
+  // New feature code
+}
+```
+
+#### 3. Synchronized Release Process
+
+##### Step 1: Plan the Release
+- Document API changes in `api/CHANGELOG.md`
+- Document frontend changes in `frontend/CHANGELOG.md`
+- Create cross-service issue in this repository
+- Define rollback strategy
+
+##### Step 2: Release Order
+1. **Database migrations** (if any)
+2. **API service** - with backward compatibility
+3. **Frontend** - after API is verified
+4. **Documentation** - update all repos
+
+##### Step 3: Verification
+- Test API endpoints directly
+- Verify CORS headers
+- Test frontend with production API
+- Check error handling for failures
+
+### Cross-Repository Release Checklist
+
+- [ ] API Changes
+  - [ ] Backward compatible (or versioned)
+  - [ ] CORS headers updated if needed
+  - [ ] Error responses documented
+  - [ ] Rate limiting configured
+  
+- [ ] Frontend Changes
+  - [ ] Service layer updated
+  - [ ] Error handling implemented
+  - [ ] Offline fallback behavior
+  - [ ] Loading states added
+  
+- [ ] Documentation
+  - [ ] API endpoints documented
+  - [ ] Frontend CLAUDE.md updated
+  - [ ] This file updated if needed
+  - [ ] README.md reflects new features
+
+### Version Coordination
+
+Since services version independently:
+- **API**: Follows SemVer based on API changes
+- **Frontend**: Follows SemVer based on user features
+- **Ecosystem**: Track compatibility in this repo
+
+Example compatibility matrix:
+| Frontend | API    | Status |
+|----------|--------|--------|
+| v3.15.0  | v1.2.0 | ✅ Stable |
+| v3.16.0  | v1.2.0 | ✅ Compatible |
+| v4.0.0   | v2.0.0 | ⚠️ Breaking |
+
+### Common Multi-Service Pitfalls
+
+#### CORS Issues
+- **Problem**: Frontend can't reach API after deployment
+- **Solution**: Verify `config/initializers/cors.rb` includes production domain
+- **Test**: Use curl with Origin header
+
+#### API Version Mismatch
+- **Problem**: Frontend expects different API response
+- **Solution**: Version your APIs (`/api/v1/`, `/api/v2/`)
+- **Migration**: Support both versions temporarily
+
+#### Deployment Timing
+- **Problem**: Frontend deployed before API is ready
+- **Solution**: Always deploy API first, verify, then frontend
+- **Rollback**: Frontend can rollback independently
+
+#### Environment Variables
+- **Problem**: Missing API keys or configs
+- **Solution**: Document all required env vars
+- **Check**: Verify before deployment
+
 ## Getting Help
 
 ### Development Issues
