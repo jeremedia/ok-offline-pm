@@ -93,4 +93,6 @@ Restart Rails, verify the matching sanitized snapshot and search counts, then sw
 - Rails is live after restart with 3,729/3,729 compatible 1,536-dimension embeddings. Status, semantic search, hybrid search, and `/up` pass through the public domain.
 - OpenWeather primary, forced WeatherKit fallback, and labeled stale-cache behavior have live proof. Provider credentials remain server-only.
 
+The first post-release refresh is held in [ok-offline PR #49](https://github.com/jeremedia/ok-offline/pull/49): the API added one art UID and six event UIDs, removed 44 event UIDs, and increased byte-identical duplicate rows from 26 to 69. Its sanitization/embargo checks passed, but it must not be merged or imported until that upstream event drift is explained.
+
 The remaining release work is date-gated: private count-only location validation on August 9, camp placement publication as v4.0.1 on August 23, and art placement plus final event refresh as v4.0.2 on August 30.
