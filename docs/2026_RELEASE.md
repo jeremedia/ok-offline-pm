@@ -84,11 +84,13 @@ CONFIRM_DATABASE_RESTORE=ok_offline_api_development \
 
 Restart Rails, verify the matching sanitized snapshot and search counts, then switch the static symlink to the corresponding immutable release. Keep the previous two static releases and their database/snapshot recovery points.
 
-## Remaining external gates as of 2026-07-20
+## v4.0.0 production proof — 2026-07-20
 
-- OpenWeather primary, forced WeatherKit fallback, and labeled stale-cache behavior have live proof through Rails. Provider credentials remain server-only.
-- Rails search status, semantic/hybrid search, and weather pass through `https://offline.oknotok.com`.
-- The public static host is still the old release: `/data/2026/*.json` currently resolves to an HTML SPA fallback and the manifest still uses the old installed-app name.
-- The Caddy document root has not yet been proven to point at the new `current` symlink, and `/up` is not yet proven to reach Rails through the public domain.
-- GitHub environment approval and deployment secrets require repository-side verification.
-- Source changes are local and uncommitted; no release tag or public promotion has occurred.
+- PWA release `4.0.0-605495d58aa4` is live at `https://offline.oknotok.com`; annotated tag `v4.0.0` resolves to commit `605495d58aa435cc3e659d2d56c4b212ff947006`.
+- Caddy serves `/var/www/offline.oknotok.com/current`. The previous immutable bootstrap release is `3.27.10-d70c5838337e`; rollback remains an atomic symlink switch.
+- The GitHub `production` environment requires Jeremy's approval. The exact-SHA promotion passed hosted unit, build, browser, upload, symlink, public identity, JSON content-type, and count gates.
+- Public JSON and a fresh production onboarding sync contain 1,201 camps, 323 art pieces, and 2,205 events with zero camp/art/derived placement fields. Production reload succeeds offline.
+- Rails is live after restart with 3,729/3,729 compatible 1,536-dimension embeddings. Status, semantic search, hybrid search, and `/up` pass through the public domain.
+- OpenWeather primary, forced WeatherKit fallback, and labeled stale-cache behavior have live proof. Provider credentials remain server-only.
+
+The remaining release work is date-gated: private count-only location validation on August 9, camp placement publication as v4.0.1 on August 23, and art placement plus final event refresh as v4.0.2 on August 30.

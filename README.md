@@ -33,7 +33,7 @@ OK-OFFLINE Ecosystem
 
 | Service | Status | Technology | Repository |
 |---------|--------|------------|------------|
-| **Frontend PWA** | 🟡 v4.0.0 release candidate | Vue 3 + Vite | [ok-offline](https://github.com/jeremedia/ok-offline) |
+| **Frontend PWA** | 🟢 Production v4.0.0 — 2026 location-free release | Vue 3 + Vite | [ok-offline](https://github.com/jeremedia/ok-offline) |
 | **Rails API** | 🟢 2026 search imported and embedded; live search and weather proven | Rails 8 + PostgreSQL/pgvector | [ok-offline-api](https://github.com/jeremedia/ok-offline-api) |
 | **Play Wisdom** | 📋 Planned | TBD | TBD |
 | **Mobile App** | 💭 Future | React Native / Flutter | TBD |
