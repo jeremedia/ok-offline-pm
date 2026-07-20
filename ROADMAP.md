@@ -1,5 +1,7 @@
 # OK-OFFLINE Ecosystem Roadmap
 
+> Historical 2025 roadmap. The current phased plan and release gates are maintained in [docs/2026_RELEASE.md](docs/2026_RELEASE.md).
+
 ## Vision Statement
 
 To create the most comprehensive and reliable offline-first toolkit for Burning Man participants, fostering community knowledge sharing and enhancing the playa experience through technology that works when you need it most.

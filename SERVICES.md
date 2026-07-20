@@ -1,5 +1,7 @@
 # OK-OFFLINE Services Documentation
 
+> Historical 2025 service notes. Current 2026 service state and promotion gates are maintained in [docs/2026_RELEASE.md](docs/2026_RELEASE.md).
+
 ## Service Overview
 
 The OK-OFFLINE ecosystem consists of multiple services working together to provide an offline-first experience for Burning Man participants. Each service has specific responsibilities and clear interfaces for communication.

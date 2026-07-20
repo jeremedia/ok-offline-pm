@@ -1,5 +1,7 @@
 # OK-OFFLINE Ecosystem Architecture
 
+> Historical 2025 architecture notes. Current 2026 release architecture and proof boundaries are maintained in [docs/2026_RELEASE.md](docs/2026_RELEASE.md).
+
 ## System Overview
 
 The OK-OFFLINE ecosystem is designed as a multi-service architecture optimized for offline-first usage in the challenging environment of Burning Man. The system prioritizes reliability, offline functionality, and progressive enhancement.

@@ -1,5 +1,7 @@
 # OK-OFFLINE Ecosystem
 
+> 2026 authority: [OK-OFFLINE 2026 release ledger](docs/2026_RELEASE.md). Older 2025 planning below is retained as project history and is not current release status.
+
 An offline-first ecosystem for Burning Man participants, providing tools for navigation, weather monitoring, and playa wisdom sharing without requiring connectivity.
 
 ## 🌟 Project Overview
@@ -31,10 +33,9 @@ OK-OFFLINE Ecosystem
 
 | Service | Status | Technology | Repository |
 |---------|--------|------------|------------|
-| **Frontend PWA** | ✅ Production v3.9.1 | Vue 3 + Vite | [ok-offline](https://github.com/jeremedia/ok-offline) |
-| **Weather API** | ✅ Production | Rails 8 API | [ok-offline-api](https://github.com/jeremedia/ok-offline-api) |
-| **Vector Search** | ✅ Production | Rails + pgvector + OpenAI | [ok-offline-api](https://github.com/jeremedia/ok-offline-api) |
-| **Play Wisdom** | 📋 Next Priority | TBD | TBD |
+| **Frontend PWA** | 🟡 v4.0.0 release candidate | Vue 3 + Vite | [ok-offline](https://github.com/jeremedia/ok-offline) |
+| **Rails API** | 🟢 2026 search imported and embedded; live search and weather proven | Rails 8 + PostgreSQL/pgvector | [ok-offline-api](https://github.com/jeremedia/ok-offline-api) |
+| **Play Wisdom** | 📋 Planned | TBD | TBD |
 | **Mobile App** | 💭 Future | React Native / Flutter | TBD |
 
 ## 🚀 Current Features
@@ -167,9 +168,9 @@ The Play Wisdom feature will enable burners to capture and share practical knowl
 - **Weather API**: TBD (in development)
 
 ### CI/CD
-- **Automatic deployment** on push to main branches
-- **GitHub Actions** for version management
-- **Semantic versioning** based on commit conventions
+- **Build-only CI** on pushes and pull requests
+- **Manual production promotion** of an exact approved main-branch SHA
+- **Explicit versions and release tags**; no automatic version bump
 
 ## 🤝 Contributing
 
