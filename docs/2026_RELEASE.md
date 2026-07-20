@@ -87,7 +87,7 @@ Restart Rails, verify the matching sanitized snapshot and search counts, then sw
 ## v4.0.0 production proof — 2026-07-20
 
 - PWA release `4.0.0-605495d58aa4` is live at `https://offline.oknotok.com`; annotated tag `v4.0.0` resolves to commit `605495d58aa435cc3e659d2d56c4b212ff947006`.
-- Caddy serves `/var/www/offline.oknotok.com/current`. The previous immutable bootstrap release is `3.27.10-d70c5838337e`; rollback remains an atomic symlink switch.
+- Caddy serves `/var/www/offline.oknotok.com/current`. The two retained rollback targets are `3.27.10-d70c5838337e` and `3.27.9-9c1dc80db639a`; rollback remains an atomic symlink switch. The exact historical v3.27.9 build reports seven legacy npm audit findings and is emergency rollback material, not a preferred steady state.
 - The GitHub `production` environment requires Jeremy's approval. The exact-SHA promotion passed hosted unit, build, browser, upload, symlink, public identity, JSON content-type, and count gates.
 - Public JSON and a fresh production onboarding sync contain 1,201 camps, 323 art pieces, and 2,205 events with zero camp/art/derived placement fields. Production reload succeeds offline.
 - Rails is live after restart with 3,729/3,729 compatible 1,536-dimension embeddings. Status, semantic search, hybrid search, and `/up` pass through the public domain.
